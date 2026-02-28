@@ -1,0 +1,9 @@
+.git
+.gitignore
+.env
+.nimble
+tools/bin
+node_modules
+logs
+session.db
+README.md

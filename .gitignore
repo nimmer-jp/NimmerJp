@@ -1,0 +1,10 @@
+.env
+.nimble/
+.nimcache/
+logs/
+node_modules/
+tools/bin/
+session.db
+main
+nimmerjp
+*.log

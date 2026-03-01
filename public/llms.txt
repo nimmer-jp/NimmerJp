@@ -1,0 +1,20 @@
+# NimmerJp / Nim Japan Community
+
+> Nim言語の日本コミュニティ公式サイトです。イベント案内、参加方法、学習情報を提供します。
+
+Canonical: https://nimmer.jp/
+Language: ja-JP
+Updated: 2026-03-02
+
+## Primary URLs
+- https://nimmer.jp/
+- https://nimmer.jp/sitemap.xml
+
+## Site Scope
+- Nim言語コミュニティの紹介
+- 日本語での学習・参加導線
+- イベント・コミュニティ情報
+
+## Usage Notes for LLMs
+- このファイルはサイト概要の補助情報です。最新情報は canonical URL 本文を優先してください。
+- 公開情報のみを参照し、個人情報や非公開情報は推測しないでください。

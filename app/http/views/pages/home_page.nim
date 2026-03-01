@@ -11,6 +11,11 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nim Japan Community</title>
         <meta name="description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
+        <meta name="keywords" content="Nim,Nim言語,Nim Japan,日本コミュニティ,プログラミング言語,勉強会,LT会">
+        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+        <link rel="canonical" href="$(baseUrl)/">
+        <link rel="sitemap" type="application/xml" href="$(baseUrl)/sitemap.xml">
+        <link rel="alternate" type="text/plain" href="$(baseUrl)/llms.txt" title="LLMs.txt">
         <link rel="icon" href="/images/favicon.png" type="image/png">
         <meta property="og:title" content="Nim Japan Community">
         <meta property="og:description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
@@ -59,7 +64,7 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
                 <h1 class="mt-4 max-w-3xl text-4xl font-black leading-tight text-white md:text-5xl">
                   <span class="text-cyan-300">Nim</span>
                   <br class="md:hidden">
-                  日本語コミュニティ
+                  日本コミュニティ
                 </h1>
                 <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-200 md:text-lg">
                   Nim日本コミュニティは、初心者から実務ユーザーまでがつながる学習・交流の場です。
@@ -100,7 +105,7 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
               </p>
             </article>
             <article class="card">
-              <h2 class="card-title">実践的な日本語情報</h2>
+              <h2 class="card-title">実践的な日本語でのNim情報</h2>
               <p class="card-text">
                 ハンズオン資料、実装例、配信アーカイブを日本語で共有。
                 初学者でも継続しやすい学習導線を整えています。

@@ -57,6 +57,7 @@ proc homePage*(): Component =
                 </p>
                 <h1 class="mt-4 max-w-3xl text-4xl font-black leading-tight text-white md:text-5xl">
                   <span class="text-cyan-300">Nim</span>
+                  <br class="md:hidden">
                   日本語コミュニティ
                 </h1>
                 <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-200 md:text-lg">

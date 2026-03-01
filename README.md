@@ -49,10 +49,11 @@ nimble dev
 `deploy.sh` で一括デプロイできます。
 
 ```bash
-PROJECT_ID=YOUR_PROJECT_ID REGION=asia-northeast1 TAG=latest ./deploy.sh
+sh deploy.sh
 ```
 
 前提:
+
 - `.env` に `SECRET_KEY` を設定済み
 - `gcloud auth login` 済み
 

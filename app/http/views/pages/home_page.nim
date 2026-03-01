@@ -15,8 +15,15 @@ proc homePage*(): Component =
         <meta property="og:description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://nimmer.jp/">
-        <meta property="og:image" content="https://nimmer.jp/images/ogp.png">
+        <meta property="og:image" content="https://nimmer.jp/ogp.png">
+        <meta property="og:image:secure_url" content="https://nimmer.jp/ogp.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="500">
+        <meta property="og:image:height" content="500">
         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Nim Japan Community">
+        <meta name="twitter:description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
+        <meta name="twitter:image" content="https://nimmer.jp/ogp.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">

@@ -110,18 +110,45 @@ proc homePage*(): Component =
               <p class="card-text">
                 Nimは読みやすい構文で、型安全と実行性能を両立できます。
               </p>
-              <pre class="mt-4 w-full max-w-full overflow-x-auto rounded-xl border border-slate-700 bg-slate-950 p-4 text-sm text-slate-200"><code class="language-nim">import std/strformat
-
-type Member = object
-  name: string
-  level: int
-
-proc greet(member: Member): string =
-  &"こんにちは、{member.name}さん。Nimへようこそ。"
-
-when isMainModule:
-  let m = Member(name: "Nim Learner", level: 1)
-  echo greet(m)</code></pre>
+              <pre class="mt-4 w-full max-w-full overflow-x-auto rounded-xl border border-slate-700 bg-slate-950 pr-4 pl-4 text-sm text-slate-200">
+                <code class="language-nim m-0">import std/strformat
+  
+type
+  Person = object
+    name: string
+    age: Natural
+  
+let people = [
+  Person(name: "John", age: 45),
+  Person(name: "Kate", age: 30)
+]
+  
+for person in people:
+  echo(fmt"{person.name} is {person.age} years old")
+  
+iterator oddNumbers[Idx, T](a: array[Idx, T]): T =
+  for x in a:
+    if x mod 2 == 1:
+      yield x
+  
+for odd in oddNumbers([3, 6, 9, 12, 15, 18]):
+  echo odd
+  
+import macros, strutils
+  
+macro toLookupTable(data: static[string]): untyped =
+  result = newTree(nnkBracket)
+  for w in data.split(';'):
+    result.add newLit(w)
+  
+const
+  data = "mov;btc;cli;xor"
+  opcodes = toLookupTable(data)
+  
+for o in opcodes:
+  echo o
+</code>
+              </pre>
             </article>
           </section>
 

@@ -1,6 +1,8 @@
 .env
+.DS_Store
 .nimble/
 .nimcache/
+nimbledeps/
 logs/
 node_modules/
 tools/bin/

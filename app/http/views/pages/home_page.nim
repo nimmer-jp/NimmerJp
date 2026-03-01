@@ -20,12 +20,16 @@ proc homePage*(): Component =
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
         <link rel="stylesheet" href="/css/tailwind.css">
       </head>
       <body class="theme-grid min-h-screen bg-slate-950 text-slate-100">
         <header class="sticky top-0 z-20 border-b border-cyan-300/20 bg-slate-950/85 backdrop-blur">
           <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-            <a href="/" class="text-lg font-black tracking-wide text-cyan-300">Nim Japan Community</a>
+            <a href="/" class="inline-flex items-center gap-2 text-lg font-black tracking-wide text-cyan-300">
+              <img src="/images/favicon.png" alt="Nim Japan crown icon" class="h-7 w-7">
+              <span>Nim Japan Community</span>
+            </a>
             <nav class="hidden gap-6 text-sm font-medium text-slate-300 md:flex">
               <a href="#about" class="hover:text-cyan-300">Nimとは</a>
               <a href="#events" class="hover:text-cyan-300">イベント</a>
@@ -70,7 +74,8 @@ proc homePage*(): Component =
             </div>
           </section>
 
-          <section id="about" class="mt-12 grid gap-5 md:grid-cols-3">
+          <div id="about" class="h-0"></div>
+          <section class="mt-12 grid gap-5 md:grid-cols-3">
             <article class="card">
               <h2 class="card-title">読みやすい構文</h2>
               <p class="card-text">
@@ -91,6 +96,24 @@ proc homePage*(): Component =
                 ハンズオン資料、実装例、配信アーカイブを日本語で共有。
                 初学者でも継続しやすい学習導線を整えています。
               </p>
+            </article>
+            <article class="card min-w-0 md:col-span-3">
+              <h2 class="card-title">Nim 記述サンプル</h2>
+              <p class="card-text">
+                Nimは読みやすい構文で、型安全と実行性能を両立できます。
+              </p>
+              <pre class="mt-4 w-full max-w-full overflow-x-auto rounded-xl border border-slate-700 bg-slate-950 p-4 text-sm text-slate-200"><code class="language-nim">import std/strformat
+
+type Member = object
+  name: string
+  level: int
+
+proc greet(member: Member): string =
+  &"こんにちは、{member.name}さん。Nimへようこそ。"
+
+when isMainModule:
+  let m = Member(name: "Nim Learner", level: 1)
+  echo greet(m)</code></pre>
             </article>
           </section>
 
@@ -134,7 +157,38 @@ proc homePage*(): Component =
               </div>
             </article>
           </section>
+
+          <section id="timeline" class="mt-12">
+            <article class="card">
+              <h2 class="card-title mb-3">Nim公式 X タイムライン</h2>
+              <p class="mb-5 text-sm text-slate-300">
+                Nim公式アカウントの最新投稿です。コミュニティでも話題共有に使ってください。
+              </p>
+              <div class="overflow-hidden rounded-xl border border-slate-700/80 bg-slate-900/70 p-2">
+                <a
+                  class="twitter-timeline"
+                  data-theme="dark"
+                  data-lang="ja"
+                  data-height="560"
+                  href="https://x.com/nim_lang"
+                >
+                  Posts by @nim_lang
+                </a>
+              </div>
+            </article>
+          </section>
         </main>
+
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/nim.min.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            if (window.hljs) {
+              window.hljs.highlightAll();
+            }
+          });
+        </script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
         <footer class="border-t border-slate-800 bg-slate-950/90">
           <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">

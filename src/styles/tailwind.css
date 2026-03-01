@@ -18,7 +18,7 @@
   }
 
   .card {
-    @apply rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6 shadow-glow backdrop-blur;
+    @apply min-w-0 rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6 shadow-glow backdrop-blur;
   }
 
   .card-title {

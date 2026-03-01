@@ -14,10 +14,12 @@ Cloud Run へデプロイできる構成を含みます。
 ```bash
 cp .env.example .env
 ./scripts/setup.sh
-nim c -r main.nim
+nimble build
+./nimmerjp
 ```
 
-初回だけ `./scripts/setup.sh` を実行してください。以降は `nim c -r main.nim` だけで起動できます。
+初回だけ `./scripts/setup.sh` を実行してください。  
+以降は `nimble build` で `Tailwind CSS` と `Nim` バイナリをまとめてビルドできます。
 （`nimble install` 単体は、未コミットのローカルプロジェクトで Nimble が VCS revision を解決できず失敗する場合があります）
 
 起動後: `http://localhost:8080`
@@ -33,6 +35,14 @@ nim c -r main.nim
 - 入力: `src/styles/tailwind.css`
 - 出力: `public/css/tailwind.css`
 - 初回実行時のみ `tools/bin/tailwindcss` に standalone バイナリを自動ダウンロード
+
+## ホットリロード開発
+
+```bash
+nimble dev
+```
+
+- `Tailwind watch` と `Basolato hot reloading (ducere serve)` を同時に起動します。
 
 ## Cloud Run デプロイ
 

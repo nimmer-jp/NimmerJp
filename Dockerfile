@@ -18,7 +18,7 @@ COPY main.nim ./main.nim
 RUN mkdir -p public/css \
   && tailwindcss -c ./tailwind.config.js -i ./src/styles/tailwind.css -o ./public/css/tailwind.css --minify
 
-FROM nimlang/nim:2.2.8-alpine AS nim-builder
+FROM nimlang/nim:alpine AS nim-builder
 WORKDIR /app
 
 RUN apk add --no-cache git build-base
@@ -36,11 +36,10 @@ RUN nim c -d:release --opt:size --hints:off -o:server main.nim
 FROM alpine:3.20
 WORKDIR /app
 
-RUN apk add --no-cache libstdc++
+RUN apk add --no-cache libstdc++ pcre
 
 ENV HOST=0.0.0.0
 ENV PORT=8080
-ENV SECRET_KEY=replace-at-deploy-time
 
 COPY --from=nim-builder /app/server ./server
 COPY --from=nim-builder /app/public ./public

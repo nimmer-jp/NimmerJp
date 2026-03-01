@@ -36,28 +36,17 @@ nim c -r main.nim
 
 ## Cloud Run デプロイ
 
-1. GCP プロジェクトを設定
+`deploy.sh` で一括デプロイできます。
 
 ```bash
-gcloud config set project YOUR_PROJECT_ID
+PROJECT_ID=YOUR_PROJECT_ID REGION=asia-northeast1 TAG=latest ./deploy.sh
 ```
 
-2. コンテナイメージをビルドして Artifact Registry へ push
+前提:
+- `.env` に `SECRET_KEY` を設定済み
+- `gcloud auth login` 済み
 
-```bash
-gcloud builds submit --tag asia-northeast1-docker.pkg.dev/YOUR_PROJECT_ID/nimmerjp/web:latest
-```
-
-3. Cloud Run へデプロイ
-
-```bash
-gcloud run deploy nimmerjp \
-  --image asia-northeast1-docker.pkg.dev/YOUR_PROJECT_ID/nimmerjp/web:latest \
-  --region asia-northeast1 \
-  --platform managed \
-  --allow-unauthenticated \
-  --set-env-vars SECRET_KEY="$(openssl rand -hex 32)"
-```
+手動実行したい場合は `deploy.sh` の各コマンドを順に実行してください。
 
 ## ディレクトリ構成
 

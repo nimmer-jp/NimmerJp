@@ -1,7 +1,7 @@
 import basolato/view
 
 
-proc homePage*():Component =
+proc homePage*(): Component =
   tmpli"""
     <!DOCTYPE html>
     <html lang="ja">
@@ -53,8 +53,11 @@ proc homePage*():Component =
                   オンライン勉強会、LT会、コード共有を通して、Nimの知見を日本語で蓄積しています。
                 </p>
                 <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a href="#join" class="inline-flex items-center justify-center rounded-xl bg-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-[0_0_15px_rgba(34,211,238,0.4)] transition hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)]">
+                  <a href="https://discord.gg/t4H8x7W7r9" class="inline-flex items-center justify-center rounded-xl bg-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-[0_0_15px_rgba(34,211,238,0.4)] transition hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)]">
                     コミュニティに参加する
+                  </a>
+                  <a href="https://nim-lang.org" class="inline-flex items-center justify-center rounded-xl border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300 hover:text-cyan-200">
+                    Nim公式
                   </a>
                   <a href="https://nim-lang.org/docs/tut1.html" class="inline-flex items-center justify-center rounded-xl border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300 hover:text-cyan-200">
                     Nim公式チュートリアル
@@ -93,23 +96,20 @@ proc homePage*():Component =
 
           <section id="events" class="mt-12 grid gap-6 lg:grid-cols-2">
             <article class="card">
-              <h2 class="card-title">次回イベント</h2>
+              <h2 class="card-title mb-4">次回イベント</h2>
               <ul class="space-y-4 text-slate-200">
-                <li class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-4">
-                  <p class="text-xs font-semibold uppercase tracking-wide text-cyan-300">オンライン勉強会</p>
-                  <p class="mt-1 text-lg font-bold text-white">Nim Web開発ハンズオン（Basolato入門）</p>
-                  <p class="mt-1 text-sm text-slate-300">毎月第2土曜 20:00 JST / Discord開催</p>
-                </li>
-                <li class="rounded-xl border border-slate-700/70 bg-slate-900/70 p-4">
-                  <p class="text-xs font-semibold uppercase tracking-wide text-emerald-300">LT Meetup</p>
-                  <p class="mt-1 text-lg font-bold text-white">「最近作ったNimツール」共有会</p>
-                  <p class="mt-1 text-sm text-slate-300">隔月開催 / 1人5分から参加OK</p>
+                <li class="rounded-xl border border-dashed border-slate-600/80 bg-slate-900/70 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-amber-300">Status</p>
+                  <p class="mt-1 text-lg font-bold text-white">未定</p>
+                  <p class="mt-2 text-sm text-slate-300">
+                    次回イベントは調整中です。日程とテーマが決まり次第、ここに追加します。
+                  </p>
                 </li>
               </ul>
             </article>
 
             <article id="join" class="card">
-              <h2 class="card-title">参加方法</h2>
+              <h2 class="card-title mb-4">参加方法</h2>
               <ol class="space-y-3 text-sm text-slate-200">
                 <li class="rounded-lg border border-slate-700/80 bg-slate-900/70 p-3">
                   1. Discordに参加し、自己紹介チャンネルでひとこと投稿
@@ -139,7 +139,7 @@ proc homePage*():Component =
         <footer class="border-t border-slate-800 bg-slate-950/90">
           <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
             <p>Nim Japan Community</p>
-            <p>Built with Basolato + Nim + TailwindCSS</p>
+            <p>Built with Basolato</p>
           </div>
         </footer>
       </body>

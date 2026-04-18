@@ -1,16 +1,75 @@
+import std/json
 import basolato/view
 
+proc buildJsonLd(baseUrl, ogImageUrl, pageDescription: string): string =
+  ## json.%* は @ で始まるキーでマクロ展開が壊れるため、JsonNode を明示構築する。
+  var org = newJObject()
+  org["@type"] = %*"Organization"
+  org["@id"] = %(baseUrl & "/#organization")
+  org["name"] = %*"Nim Japan Community"
+  org["alternateName"] = %*"Nim日本コミュニティ"
+  org["url"] = %(baseUrl & "/")
+  org["description"] = %*"Nim言語の日本コミュニティ。勉強会・資料・参加方法をまとめた公式サイト。"
+  var logo = newJObject()
+  logo["@type"] = %*"ImageObject"
+  logo["url"] = %(baseUrl & "/images/favicon.png")
+  org["logo"] = logo
+  org["image"] = %ogImageUrl
+  var sameAs = newJArray()
+  sameAs.add(%*"https://discord.gg/t4H8x7W7r9")
+  org["sameAs"] = sameAs
+
+  var site = newJObject()
+  site["@type"] = %*"WebSite"
+  site["@id"] = %(baseUrl & "/#website")
+  site["url"] = %(baseUrl & "/")
+  site["name"] = %*"Nim Japan Community"
+  site["description"] = %pageDescription
+  site["inLanguage"] = %*"ja-JP"
+  var publisher = newJObject()
+  publisher["@id"] = %(baseUrl & "/#organization")
+  site["publisher"] = publisher
+
+  var page = newJObject()
+  page["@type"] = %*"WebPage"
+  page["@id"] = %(baseUrl & "/#webpage")
+  page["url"] = %(baseUrl & "/")
+  page["name"] = %*"Nim Japan Community"
+  page["description"] = %pageDescription
+  page["inLanguage"] = %*"ja-JP"
+  var isPartOf = newJObject()
+  isPartOf["@id"] = %(baseUrl & "/#website")
+  page["isPartOf"] = isPartOf
+  var about = newJObject()
+  about["@id"] = %(baseUrl & "/#organization")
+  page["about"] = about
+  var primaryImg = newJObject()
+  primaryImg["@type"] = %*"ImageObject"
+  primaryImg["url"] = %ogImageUrl
+  page["primaryImageOfPage"] = primaryImg
+
+  var graph = newJArray()
+  graph.add(org)
+  graph.add(site)
+  graph.add(page)
+  var root = newJObject()
+  root["@context"] = %*"https://schema.org"
+  root["@graph"] = graph
+  return $root
 
 proc homePage*(baseUrl = "https://nimmer.jp"): Component =
   let ogImageUrl = baseUrl & "/ogp.png?v=20260301"
-  tmpli"""
+  let pageDescription =
+    "Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。"
+  let jsonLdStr = buildJsonLd(baseUrl, ogImageUrl, pageDescription)
+  tmpl"""
     <!DOCTYPE html>
     <html lang="ja">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nim Japan Community</title>
-        <meta name="description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
+        <meta name="description" content="$(pageDescription)">
         <meta name="keywords" content="Nim,Nim言語,Nim Japan,日本コミュニティ,プログラミング言語,勉強会,LT会">
         <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
         <link rel="canonical" href="$(baseUrl)/">
@@ -18,9 +77,11 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
         <link rel="alternate" type="text/plain" href="$(baseUrl)/llms.txt" title="LLMs.txt">
         <link rel="icon" href="/images/favicon.png" type="image/png">
         <meta property="og:title" content="Nim Japan Community">
-        <meta property="og:description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
+        <meta property="og:description" content="$(pageDescription)">
         <meta property="og:type" content="website">
         <meta property="og:url" content="$(baseUrl)/">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="Nim Japan Community">
         <meta property="og:image" content="$(ogImageUrl)">
         <meta property="og:image:secure_url" content="$(ogImageUrl)">
         <meta property="og:image:type" content="image/png">
@@ -28,8 +89,9 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
         <meta property="og:image:height" content="500">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Nim Japan Community">
-        <meta name="twitter:description" content="Nim言語の日本コミュニティ公式ホームページ。勉強会・資料・参加方法をまとめています。">
+        <meta name="twitter:description" content="$(pageDescription)">
         <meta name="twitter:image" content="$(ogImageUrl)">
+        <script type="application/ld+json">$(jsonLdStr|raw)</script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -45,6 +107,7 @@ proc homePage*(baseUrl = "https://nimmer.jp"): Component =
             </a>
             <nav class="hidden gap-6 text-sm font-medium text-slate-300 md:flex">
               <a href="#about" class="hover:text-cyan-300">Nimとは</a>
+              <a href="#community-repos" class="hover:text-cyan-300">nimmer-jp</a>
               <a href="#events" class="hover:text-cyan-300">イベント</a>
               <a href="#join" class="hover:text-cyan-300">参加方法</a>
             </nav>
@@ -155,6 +218,72 @@ for o in opcodes:
   echo o
 </code>
               </pre>
+            </article>
+          </section>
+
+          <section id="community-repos" class="mt-12">
+            <article class="card">
+              <h2 class="card-title mb-4">Nim in Japan の GitHub</h2>
+              <p class="mb-5 text-sm text-slate-300">
+                コミュニティの GitHub 組織と、公開中のライブラリ・ツールへのリンクです。
+              </p>
+              <ul class="space-y-3">
+                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
+                  <a
+                    href="https://github.com/nimmer-jp"
+                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Nim in Japan の GitHub
+                  </a>
+                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp</p>
+                </li>
+                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
+                  <a
+                    href="https://github.com/nimmer-jp/crown"
+                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    NextJSライクなWebフレームワーク Crown
+                  </a>
+                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/crown</p>
+                </li>
+                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
+                  <a
+                    href="https://github.com/nimmer-jp/tiara"
+                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    UIコンポーネントライブラリ Tiara
+                  </a>
+                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/tiara</p>
+                </li>
+                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
+                  <a
+                    href="https://github.com/nimmer-jp/nimtra"
+                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Nim製ORM nimtra
+                  </a>
+                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/nimtra</p>
+                </li>
+                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
+                  <a
+                    href="https://github.com/nimmer-jp/nimchat"
+                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Nim製LLMチャットクライアント
+                  </a>
+                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/nimchat</p>
+                </li>
+              </ul>
             </article>
           </section>
 

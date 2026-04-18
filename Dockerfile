@@ -21,9 +21,15 @@ RUN mkdir -p public/css \
 FROM nimlang/nim:alpine AS nim-builder
 WORKDIR /app
 
-RUN apk add --no-cache git build-base
+RUN apk add --no-cache git build-base bash
+
+# Basolato はコンパイル時に SECRET_KEY を要求する（実行時は別値に差し替え可能）
+ENV SECRET_KEY=docker-build-placeholder
 
 RUN nimble install -y https://github.com/itsumura-h/nim-basolato
+
+COPY scripts/patch-basolato-gcsafe.sh ./scripts/patch-basolato-gcsafe.sh
+RUN chmod +x ./scripts/patch-basolato-gcsafe.sh && bash ./scripts/patch-basolato-gcsafe.sh
 
 COPY app ./app
 COPY main.nim ./

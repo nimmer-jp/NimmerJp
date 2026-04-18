@@ -7,6 +7,8 @@ cd "${ROOT_DIR}"
 export NIMBLE_DIR="${ROOT_DIR}/.nimble"
 
 nimble install -y https://github.com/itsumura-h/nim-basolato
+chmod +x ./scripts/patch-basolato-gcsafe.sh
+bash ./scripts/patch-basolato-gcsafe.sh
 ./scripts/tailwind.sh build
 
 echo "Setup complete. Run: NIMBLE_DIR=.nimble nimble dev"

@@ -11,6 +11,7 @@ requires "nim >= 2.0.0"
 # Keeping it out of `requires` avoids Nimble package index resolution issues.
 
 before build:
+  exec "bash ./scripts/patch-basolato-gcsafe.sh"
   exec "./scripts/tailwind.sh build"
 
 task css, "Build Tailwind CSS":

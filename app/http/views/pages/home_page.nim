@@ -221,70 +221,79 @@ for o in opcodes:
             </article>
           </section>
 
-          <section id="community-repos" class="mt-12">
-            <article class="card">
-              <h2 class="card-title mb-4">Nim in Japan の GitHub</h2>
-              <p class="mb-5 text-sm text-slate-300">
-                コミュニティの GitHub 組織と、公開中のライブラリ・ツールへのリンクです。
+          <section id="community-repos" class="mt-16 md:mt-24">
+            <div class="mb-10 text-center">
+              <span class="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3 py-1 text-xs font-semibold text-cyan-300">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                Open Source
+              </span>
+              <h2 class="mt-4 text-3xl font-black text-white md:text-4xl">
+                コミュニティプロジェクト
+              </h2>
+              <p class="mt-4 text-slate-300">
+                nimmer-jp コミュニティで開発中の各種オープンソースプロジェクトです。<br class="hidden md:block">
+                ぜひスターやコントリビュートでお気軽にご参加ください。
               </p>
-              <ul class="space-y-3">
-                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
-                  <a
-                    href="https://github.com/nimmer-jp"
-                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Nim in Japan の GitHub
-                  </a>
-                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp</p>
-                </li>
-                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
-                  <a
-                    href="https://github.com/nimmer-jp/crown"
-                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    NextJSライクなWebフレームワーク Crown
-                  </a>
-                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/crown</p>
-                </li>
-                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
-                  <a
-                    href="https://github.com/nimmer-jp/tiara"
-                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    UIコンポーネントライブラリ Tiara
-                  </a>
-                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/tiara</p>
-                </li>
-                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
-                  <a
-                    href="https://github.com/nimmer-jp/nimtra"
-                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Nim製ORM nimtra
-                  </a>
-                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/nimtra</p>
-                </li>
-                <li class="rounded-xl border border-slate-700/80 bg-slate-900/70 p-4">
-                  <a
-                    href="https://github.com/nimmer-jp/nimchat"
-                    class="text-base font-bold text-cyan-300 hover:text-cyan-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Nim製LLMチャットクライアント
-                  </a>
-                  <p class="mt-1 text-sm text-slate-400">https://github.com/nimmer-jp/nimchat</p>
-                </li>
-              </ul>
-            </article>
+            </div>
+            
+            <div class="grid gap-6 md:grid-cols-2">
+              <!-- nimmer-jp -->
+              <a href="https://github.com/nimmer-jp" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-900/60 p-6 transition-all hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 md:col-span-2">
+                <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-2xl transition-all group-hover:bg-cyan-500/20"></div>
+                <div class="relative z-10 flex flex-col gap-4 md:flex-row md:items-center">
+                  <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-cyan-800/50 bg-cyan-950 text-cyan-400 shadow-inner">
+                    <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-xl font-bold text-white transition-colors group-hover:text-cyan-300">Nim in Japan (nimmer-jp)</h3>
+                    <p class="mt-1 text-sm text-slate-400">コミュニティのオーガニゼーション。ここからすべてのプロジェクトが生まれています。オーガニゼーションへの参加も大歓迎です！</p>
+                  </div>
+                  <div class="hidden shrink-0 items-center text-cyan-400 md:flex">
+                    <svg class="h-6 w-6 -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Crown -->
+              <a href="https://github.com/nimmer-jp/crown" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-900/60 p-6 transition-all hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/20">
+                <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-indigo-500/10 blur-2xl transition-all group-hover:bg-indigo-500/20"></div>
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-indigo-800/50 bg-indigo-950 text-indigo-400 shadow-inner">
+                  <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white transition-colors group-hover:text-indigo-300">Crown</h3>
+                <p class="mt-2 text-sm text-slate-400">Next.jsライクなNim製フルスタックWebフレームワーク。ファイルベースルーティングやSSR/SSGなどをNimの快適な型安全性とともに実現します。</p>
+              </a>
+
+              <!-- Tiara -->
+              <a href="https://github.com/nimmer-jp/tiara" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-900/60 p-6 transition-all hover:-translate-y-1 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/20">
+                <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-pink-500/10 blur-2xl transition-all group-hover:bg-pink-500/20"></div>
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-pink-800/50 bg-pink-950 text-pink-400 shadow-inner">
+                  <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white transition-colors group-hover:text-pink-300">Tiara</h3>
+                <p class="mt-2 text-sm text-slate-400">美しいUIコンポーネントライブラリ。Tailwind CSSベースで、Crownですぐに使える洗練されたモダンなデザインパーツを提供します。</p>
+              </a>
+
+              <!-- nimtra -->
+              <a href="https://github.com/nimmer-jp/nimtra" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-900/60 p-6 transition-all hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20">
+                <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-emerald-500/10 blur-2xl transition-all group-hover:bg-emerald-500/20"></div>
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-emerald-800/50 bg-emerald-950 text-emerald-400 shadow-inner">
+                  <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white transition-colors group-hover:text-emerald-300">nimtra</h3>
+                <p class="mt-2 text-sm text-slate-400">Nim製の強力で軽量なORM。型安全で直感的なデータベース操作を可能にし、堅牢なバックエンド開発をサポートします。</p>
+              </a>
+
+              <!-- nimchat -->
+              <a href="https://github.com/nimmer-jp/nimchat" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-900/60 p-6 transition-all hover:-translate-y-1 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/20">
+                <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/10 blur-2xl transition-all group-hover:bg-amber-500/20"></div>
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-800/50 bg-amber-950 text-amber-400 shadow-inner">
+                  <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white transition-colors group-hover:text-amber-300">nimchat</h3>
+                <p class="mt-2 text-sm text-slate-400">Nim製のLLMチャットクライアント。OpenAIやAnthropicなどのAPIと連携し、日々のAIとのやりとりをより快適にします。</p>
+              </a>
+            </div>
           </section>
 
           <section id="events" class="mt-12 grid gap-6 lg:grid-cols-2">
